@@ -11,13 +11,5 @@ func main() {
 		fmt.Println("Error:", err)
 		return
 	}
-                                                                 
-	fmt.Println("Default Temperature:", config.Default.Temperature)
-	for _, period := range config.Periods {
-		fmt.Printf("Period: %dK, Start: %s, End: %s\n",
-			period.Temperature,
-			period.StartTime.Format("15:04:05"),
-			period.EndTime.Format("15:04:05"),
-		)
-	}
+	src.WriteTimer(config)
 }
