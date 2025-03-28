@@ -3,7 +3,6 @@ package src
 import (
 	"fmt"
 	"time"
-
 	"github.com/BurntSushi/toml"
 )
 

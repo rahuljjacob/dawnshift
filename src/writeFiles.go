@@ -23,9 +23,9 @@ func writeTimer(config *Config){
 
 	timeFormat := "15:04:05"
 	file.WriteString("[Unit]\nDescription=Apply screen filter on schedule\n\n[Timer]\n")
-	for _, signalTime := range config.Periods {
-		startTime := "OnCalendar=*-*-* "+signalTime.StartTime.Format(timeFormat)+"\n"
-		endTime := "OnCalendar=*-*-* "+signalTime.EndTime.Format(timeFormat)+"\n"
+	for _, periodTimes := range config.Periods {
+		startTime := "OnCalendar=*-*-* "+periodTimes.StartTime.Format(timeFormat)+"\n"
+		endTime := "OnCalendar=*-*-* "+periodTimes.EndTime.Format(timeFormat)+"\n"
 
 		if _, exists := uniqueTimes[startTime]; !exists {
 			file.WriteString(startTime)
