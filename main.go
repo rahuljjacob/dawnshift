@@ -11,5 +11,6 @@ func main() {
 		fmt.Println("Error:", err)
 		return
 	}
-	src.WriteTimer(config)
+
+	src.WriteUnitFiles(config)
 }
