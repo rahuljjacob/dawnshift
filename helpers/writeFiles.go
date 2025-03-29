@@ -1,20 +1,12 @@
-package src
+package helpers
 
 import (
 	"fmt"
 	"os"
 )
 
-
-
 func writeTimer(config *Config){
-	home, err := os.UserHomeDir()
-	if err != nil {
-		fmt.Println("Error getting home directory:", err)
-		return
-	}
-
-	file, err := os.Create(home + "/.config/systemd/user/sunset.timer")
+	file, err := os.Create("/etc/systemd/system/sunset.timer")
 	if err != nil {
 		fmt.Println("Error writing to timer file")
 	}
@@ -43,22 +35,16 @@ func writeTimer(config *Config){
 }
 
 func writeService(){
-	home, err := os.UserHomeDir()
+	file, err := os.Create("/etc/systemd/system/sunset.service")
 	if err != nil {
-		fmt.Println("Error getting home directory:", err)
-		return
-	}
-
-	file, err := os.Create(home + "/.config/systemd/user/sunset.service")
-	if err != nil {
-		fmt.Println("Error writing to service file")
+		fmt.Println(err)
 	}
 	serviceContent := `[Unit]
 Description=Apply screen filter
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/sunset adjust
+ExecStart=/usr/bin/sunset apply
 `
 	file.WriteString(serviceContent)
 	defer file.Close()

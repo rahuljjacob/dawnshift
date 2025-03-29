@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
+	"sunset/helpers"
 )
 
 func main() {
@@ -35,9 +37,20 @@ func main() {
 }
 
 func Install() {
-	fmt.Println("Installing systemd service...") // Placeholder
+	config, err := helpers.ParseConfig("./config.toml")
+	if err != nil {
+		fmt.Println(err)
+	}
+	helpers.WriteUnitFiles(config)
+	cmd := exec.Command("hyprsunset")
+	cmd.Run()
+	helpers.ApplyFilter(config)
 }
 
 func ApplyFilter() {
-	fmt.Println("Applying screen filter...") // Placeholder
+	config, err := helpers.ParseConfig("./config.toml")
+	if err != nil {
+		fmt.Println(err)
+	}
+	helpers.ApplyFilter(config)
 }

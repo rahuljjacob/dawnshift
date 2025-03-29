@@ -1,7 +1,59 @@
 [[period]]
+temperature = 2000
+start_time = 10:15:00
+end_time = 10:20:00
+
+[[period]]
+temperature = 8000
+start_time = 10:20:00
+end_time = 10:25:00
+
+[[period]]
+temperature = 2000
+start_time = 10:25:00
+end_time = 10:30:00
+
+[[period]]
+temperature = 8000
+start_time = 10:30:00
+end_time = 10:35:00
+
+[[period]]
+temperature = 2000
+start_time = 10:35:00
+end_time = 10:40:00
+
+[[period]]
+temperature = 8000
+start_time = 10:40:00
+end_time = 10:45:00
+
+[[period]]
+temperature = 2000
+start_time = 10:45:00
+end_time = 10:50:00
+
+[[period]]
+temperature = 8000
+start_time = 10:50:00
+end_time = 10:55:00
+
+[[period]]
+temperature = 2000
+start_time = 10:55:00
+end_time = 11:00:00
+
+[[period]]
+temperature = 8000
+start_time = 11:00:00
+end_time = 11:05:00
+
+
+
+[[period]]
 temperature = 6250
 start_time = 18:30:00
-end_time = 20:00:00
+end_time =  20:00:00
 
 [[period]]
 temperature = 5750
