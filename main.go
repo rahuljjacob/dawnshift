@@ -3,15 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
-	"sunset/helpers"
+	"dawnshift/helpers"
 )
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: sunset <command>")
+		fmt.Println("Usage: dawnshift <command>")
 		fmt.Println("Commands: install, apply")
-		fmt.Println("Run 'sunset --help' for help")
+		fmt.Println("Run 'dawnshift --help' for help")
 		return
 	}
 
@@ -23,32 +22,30 @@ func main() {
 	case "apply":
 		ApplyFilter()
 	case "--help":
-		fmt.Println("Usage: sunset <command>")
+		fmt.Println("Usage: dawnshift <command>")
 		fmt.Println("Commands:")
 		fmt.Println("  install  - Install systemd service")
 		fmt.Println("  apply    - Apply screen filter")
 		fmt.Println("  --help   - Show this help message")
 	default:
 		fmt.Printf("No such command \"%s\"\n", command)
-		fmt.Println("Usage: sunset <command>")
+		fmt.Println("Usage: dawnshift <command>")
 		fmt.Println("Commands: install, apply")
-		fmt.Println("Run 'sunset --help' for help")
+		fmt.Println("Run 'dawnshift --help' for help")
 	}
 }
 
 func Install() {
-	config, err := helpers.ParseConfig("./config.toml")
+	config, err := helpers.ParseConfig()
 	if err != nil {
 		fmt.Println(err)
 	}
 	helpers.WriteUnitFiles(config)
-	cmd := exec.Command("hyprsunset")
-	cmd.Run()
 	helpers.ApplyFilter(config)
 }
 
 func ApplyFilter() {
-	config, err := helpers.ParseConfig("./config.toml")
+	config, err := helpers.ParseConfig()
 	if err != nil {
 		fmt.Println(err)
 	}

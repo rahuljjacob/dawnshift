@@ -1,4 +1,4 @@
-module sunset
+module dawnshift
 
 go 1.24.1
 
