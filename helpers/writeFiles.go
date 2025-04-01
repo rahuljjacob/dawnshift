@@ -14,7 +14,7 @@ func writeTimer(config *Config){
 		return
 	}
 
-	file, err := os.Create(home + "/.config/systemd/user/sunset.timer")
+	file, err := os.Create(home + "/.config/systemd/user/dawnshift.timer")
 	if err != nil {
 		fmt.Println("Error writing to timer file")
 	}
@@ -49,7 +49,7 @@ func writeService(){
 		return
 	}
 
-	file, err := os.Create(home + "/.config/systemd/user/sunset.service")
+	file, err := os.Create(home + "/.config/systemd/user/dawnshift.service")
 	if err != nil {
 		fmt.Println("Error writing to service file")
 	}
@@ -58,7 +58,7 @@ Description=Apply screen filter
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/sunset apply
+ExecStart=/usr/bin/dawnshift apply
 `
 	file.WriteString(serviceContent)
 	defer file.Close()

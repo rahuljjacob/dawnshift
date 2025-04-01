@@ -37,7 +37,7 @@ func ParseConfig() (*Config, error) {
 		fmt.Println("Error getting home directory:", err)
 		return &config, err
 	}
-	filePath := homeDir + "/.config/"
+	filePath := homeDir + "/.config/dawnshift/dawnshift.toml"
 
 	if _, err := toml.DecodeFile(filePath, &config); err != nil {
 		return nil, fmt.Errorf("error decoding TOML: %w", err)
