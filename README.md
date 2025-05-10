@@ -4,6 +4,13 @@ A screen shading tool for Hyprland that wraps hyprsunset and allows scheduling s
 
 ## Build from source
 
+##### Install Dependencies
+
+```
+yay -S go hyprsunset 
+```
+##### Build
+
 ``` 
 git clone git@github.com:rahuljjacob/dawnshift.git
 cd dawnshift
