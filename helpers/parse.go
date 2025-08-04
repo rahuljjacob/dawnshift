@@ -2,8 +2,9 @@ package helpers
 
 import (
 	"fmt"
-	"time"
 	"os"
+	"time"
+
 	"github.com/BurntSushi/toml"
 )
 
@@ -20,14 +21,14 @@ type Config struct {
 	Periods []Period `toml:"period"`
 }
 
-func printConfig(config *Config){
-	fmt.Println(config.Default.Temperature)
-	for _, i := range config.Periods {
-		fmt.Println(i.StartTime)
-		fmt.Println(i.EndTime)
-		fmt.Println(i.Temperature)
-	}
-}
+// func printConfig(config *Config){
+// 	fmt.Println(config.Default.Temperature)
+// 	for _, i := range config.Periods {
+// 		fmt.Println(i.StartTime)
+// 		fmt.Println(i.EndTime)
+// 		fmt.Println(i.Temperature)
+// 	}
+// }
 
 func ParseConfig() (*Config, error) {
 	var config Config
@@ -45,6 +46,5 @@ func ParseConfig() (*Config, error) {
 	if config.Default.Temperature == 0 {
 		config.Default.Temperature = 6250
 	}
-	printConfig(&config)
 	return &config, nil
 }

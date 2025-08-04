@@ -3,11 +3,11 @@ package helpers
 import (
 	"fmt"
 	"os/exec"
-	"time"
 	"strconv"
+	"time"
 )
 
-func ApplyFilter(config *Config){
+func ApplyFilter(config *Config) {
 	cmd := exec.Command("pgrep", "-x", "hyprsunset")
 	err := cmd.Run()
 	if err != nil {
@@ -28,9 +28,14 @@ func ApplyFilter(config *Config){
 		// If period goes through the 12:00
 		startTime := normalizeTime(periodTimes.StartTime)
 		endTime := normalizeTime(periodTimes.EndTime)
-		if endTime.Before(startTime){
+		if endTime.Before(startTime) {
 			if comparisonTime.After(startTime) || comparisonTime.Before(endTime) {
-				cmd := exec.Command("hyprctl", "hyprsunset", "temperature", strconv.Itoa(periodTimes.Temperature))
+				cmd := exec.Command(
+					"hyprctl",
+					"hyprsunset",
+					"temperature",
+					strconv.Itoa(periodTimes.Temperature),
+				)
 				_, err := cmd.Output()
 				if err != nil {
 					fmt.Println(err)
@@ -51,8 +56,13 @@ func ApplyFilter(config *Config){
 		}
 
 		if !tempApplied {
-			cmd := exec.Command("hyprctl", "hyprsunset", "temperature", strconv.Itoa(config.Default.Temperature))
-			_ , err := cmd.Output()
+			cmd := exec.Command(
+				"hyprctl",
+				"hyprsunset",
+				"temperature",
+				strconv.Itoa(config.Default.Temperature),
+			)
+			_, err := cmd.Output()
 			if err != nil {
 				fmt.Println(err)
 			}

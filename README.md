@@ -7,11 +7,12 @@ A screen shading tool for Hyprland that wraps hyprsunset and allows scheduling s
 ##### Install Dependencies
 
 ```
-yay -S go hyprsunset 
+yay -S go hyprsunset
 ```
+
 ##### Build
 
-``` 
+```
 git clone git@github.com:rahuljjacob/dawnshift.git
 cd dawnshift
 go build -o dawnshift
@@ -39,6 +40,7 @@ Dawnshift uses a TOML configuration file to schedule screen temperature adjustme
 Dawnshift's configuration file allows you to schedule screen temperature adjustments based on the time of day. The default section sets the base temperature, while period entries define specific time ranges with different temperatures.
 
 Example:
+
 ```
 [default]
 temperature = 6250
@@ -65,13 +67,14 @@ end_time = "06:00:00"
 ```
 
 Install and enable the systemd timer/service units:
+
 ```
 dawnshift install
 systemctl --user enable --now dawnshift.timer
 ```
 
-
 Add this to your hyprland config to ensure the correct screen temperature is set when you log in:
+
 ```
 exec-once = dawnshift install
 ```
